@@ -1,0 +1,90 @@
+﻿@page "/OrdersList"
+@using Orders.Front.Models
+@using System.Net
+@inject HttpClient Http
+
+<h3>Заказы</h3>
+
+<br/>
+
+<p>@Message</p>
+@if (@IsTable)
+{
+    <div class="alert w-auto">
+        <table class="table table-sm table-hover">
+            <thead class="table-bordered border-top-0">
+            <tr>
+                <th scope="col" class="text-center">Город отправителя</th>
+                <th scope="col" class="text-center">Адрес отправителя</th>
+                <th scope="col" class="text-center">Город получателя</th>
+                <th scope="col" class="text-center">Адрес получателя</th>
+                <th scope="col" class="text-center">Вес</th>
+                <th scope="col" class="text-center">Дата получения</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var ord in OrdersListToShow)
+            {
+                <tr>
+                    <td>
+                        <div class="text-center">
+                            @ord.SendersCity
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            @ord.SendersAddress
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            @ord.RecipientsCity
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            @ord.RecipientsAddress
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            @ord.Weight гр
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            @ord.PickupDay/@ord.PickupMonth/@ord.PickupYear
+                        </div>
+                    </td>
+
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+@code {
+    public List<Order>? OrdersListToShow { get; set; }
+    private bool IsTable { get; set; } = false; 
+    private string Message { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Message = "Загрузка...";
+        var ordersResponse = await Http.GetAsync("https://localhost:7032/orders/getOrders");
+        
+        if (ordersResponse.StatusCode == HttpStatusCode.NotFound)
+        {
+            OrdersListToShow = new List<Order>();
+            Message = "Список заказов пуст";
+        }
+        else
+        {
+            IsTable = true;
+            OrdersListToShow = ordersResponse.Content.ReadFromJsonAsync<List<Order>>().Result;
+            Message = "";
+        }
+    }
+}

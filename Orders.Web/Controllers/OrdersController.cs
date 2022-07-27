@@ -19,11 +19,13 @@ public class OrdersController : ControllerBase
         _service = new OrdersService(context);
         _mapper = mapper;
     }
-    
+
     [HttpGet("getOrders")]
     public async Task<IActionResult> GetOrders()
     {
         var orders = await _service.GetAll();
+        if (orders.Count == 0)
+            return NotFound();
         return Ok(_mapper.Map<List<OrderResult>>(orders));
     }
 

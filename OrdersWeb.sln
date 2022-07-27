@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Common", "Orders.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.BLL", "Orders.BLL\Orders.BLL.csproj", "{183600CE-4EA1-4460-9AB0-6A9D92FBA78C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Front", "Orders.Front\Orders.Front.csproj", "{931E7029-E65A-4406-B06B-C01886BB8986}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{183600CE-4EA1-4460-9AB0-6A9D92FBA78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{183600CE-4EA1-4460-9AB0-6A9D92FBA78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{183600CE-4EA1-4460-9AB0-6A9D92FBA78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931E7029-E65A-4406-B06B-C01886BB8986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931E7029-E65A-4406-B06B-C01886BB8986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931E7029-E65A-4406-B06B-C01886BB8986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931E7029-E65A-4406-B06B-C01886BB8986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
