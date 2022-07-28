@@ -3,6 +3,7 @@
 public class Order
 {
     public Guid OrderId { set; get; }
+    public int OrderNumber { set; get; }
     public string SendersCity { set; get; }
     public string SendersAddress { set; get; }
     public string RecipientsCity { set; get; }

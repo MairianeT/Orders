@@ -14,6 +14,7 @@
         <table class="table table-sm table-hover">
             <thead class="table-bordered border-top-0">
             <tr>
+                <th scope="col" class="text-center">Номер заказа</th>
                 <th scope="col" class="text-center">Город отправителя</th>
                 <th scope="col" class="text-center">Адрес отправителя</th>
                 <th scope="col" class="text-center">Город получателя</th>
@@ -26,6 +27,11 @@
             @foreach (var ord in OrdersListToShow)
             {
                 <tr>
+                    <td>
+                        <div class="text-center">
+                            @ord.OrderNumber
+                        </div>
+                    </td>
                     <td>
                         <div class="text-center">
                             @ord.SendersCity
@@ -67,8 +73,8 @@
 
 @code {
     public List<Order>? OrdersListToShow { get; set; }
-    private bool IsTable { get; set; } = false; 
-    private string Message { get; set; }
+    private bool IsTable { get; set; } = false;
+    private string Message { get; set; } = "";
 
     protected override async Task OnInitializedAsync()
     {

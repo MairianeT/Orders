@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZCMpFi8ptpjV3yWfDfusacHBknuLfOiYk3oG6K0sohWFyBf4BlHXr5WlfYI8z+qK79xyiLAQGIuX2hXhUkj0bQ==",
+  "dgSpecHash": "snP8Cne+s+OW/STdcee5MtGy0fVoJxyzOIG/QhnXcaZFMyWRdQStSDFlIwWCVRC6SRyylbYFK3jVSqMjEsDvNw==",
   "success": true,
   "projectFilePath": "D:\\Users\\MairianeT\\RiderProjects\\OrdersWeb\\OrdersWeb\\Orders.Front\\Orders.Front.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "C:\\Users\\MairianeT\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\MairianeT\\.nuget\\packages\\microsoft.jsinterop\\6.0.3\\microsoft.jsinterop.6.0.3.nupkg.sha512",
     "C:\\Users\\MairianeT\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.3\\microsoft.jsinterop.webassembly.6.0.3.nupkg.sha512",
+    "C:\\Users\\MairianeT\\.nuget\\packages\\newtonsoft.json\\13.0.2-beta1\\newtonsoft.json.13.0.2-beta1.nupkg.sha512",
     "C:\\Users\\MairianeT\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\MairianeT\\.nuget\\packages\\system.io.pipelines\\6.0.2\\system.io.pipelines.6.0.2.nupkg.sha512",
     "C:\\Users\\MairianeT\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",

@@ -1,7 +1,80 @@
 ﻿@page "/NewOrder"
+@using Orders.Front.Models
+@using Newtonsoft.Json
+@inject HttpClient Http
+
 
 <h3>Создание нового заказа</h3>
 
-@code {
-    
+<br/>
+
+<EditForm Model="@NewOrderToAdd">
+        
+    <div>
+        <label>Город отправителя: </label>
+        <InputText @bind-Value="NewOrderToAdd.SendersCity" />
+    </div>
+    <br />
+    <div >
+        <label>Адрес отправителя: </label>
+        <InputText @bind-Value="NewOrderToAdd.SendersAddress" />
+    </div>
+    <br />
+    <div>
+        <label >Город полечателя: </label>
+        <InputText @bind-Value="NewOrderToAdd.RecipientsCity" />
+    </div>
+    <br />
+    <div>
+        <label >Адрес получателя: </label>
+        <InputText @bind-Value="NewOrderToAdd.RecipientsAddress" />
+    </div>
+    <br />
+    <div>
+        <label>Вес: </label>
+        <InputNumber @bind-Value="NewOrderToAdd.Weight" /> гр
+    </div>
+    <br />
+    <div>
+        <label>Дата получения: </label>
+        <InputDate @bind-Value="Date"/>
+    </div>
+    <br />
+
+</EditForm>
+<br />
+<button @onclick="@(()=> AddNewOrder())">Добавить заказ</button>
+
+<p>@Message</p>
+
+@code
+{
+    private Order NewOrderToAdd { get; set; }
+    private string Message { get; set; } = "";
+    public DateOnly Date { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        NewOrderToAdd = new Order();
+        Date =  DateOnly.FromDateTime(DateTime.Now);
+    }
+
+    protected async Task AddNewOrder()
+    {
+        if (string.IsNullOrEmpty(NewOrderToAdd.SendersCity)
+            || string.IsNullOrEmpty(NewOrderToAdd.SendersAddress)
+            || string.IsNullOrEmpty(NewOrderToAdd.RecipientsCity)
+            || string.IsNullOrEmpty(NewOrderToAdd.RecipientsAddress)
+            || NewOrderToAdd.Weight == 0 )
+        {
+            Message = "Не все поля заполнены";
+            return;
+        }
+
+        var uri = $"https://localhost:7032/orders/AddOrder?SendersCity={NewOrderToAdd.SendersCity}&SendersAddress={NewOrderToAdd.SendersAddress}&RecipientsCity={NewOrderToAdd.RecipientsCity}&RecipientsAddress={NewOrderToAdd.RecipientsAddress}&Weight={NewOrderToAdd.Weight}&PickupDay={Date.Day}&PickupMonth={Date.Month}&PickupYear={Date.Year}";
+        string json = JsonConvert.SerializeObject(NewOrderToAdd);
+        HttpContent content = new StringContent(json);
+        await Http.PostAsync(uri, content);
+        Message = "Заказ добавлен";
+    }
 }

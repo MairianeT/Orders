@@ -23,6 +23,7 @@ public class OrdersService : IOrdersService
     {
         var order = new Order()
         {
+            OrderNumber = _context.Orders.ToList().Count + 1,
             SendersCity = newOrder.SendersCity,
             SendersAddress = newOrder.SendersAddress,
             RecipientsCity = newOrder.RecipientsCity,
